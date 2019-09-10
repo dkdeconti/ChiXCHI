@@ -8,7 +8,11 @@ ChiXCHI was designed primarily for identifying cross-sample and chimeric read co
 ## Requirements
 
 * Python3
-* 
+* biopython
+* numpy
+* scipy
+* scikit-learn
+* statsmodels
 
 ### Optional software
 
