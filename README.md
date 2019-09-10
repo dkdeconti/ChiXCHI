@@ -27,7 +27,14 @@ It is also recommended, but not required, that reads be merged prior to analysis
 ## Usage
 
 ```bash
-
+# First identify the potential contaminant k-mers.
+python3 ChiXCHI.py identify \
+    sample1.kmer_counts.tsv \
+    sample2.kmer_counts.tsv > filter_matrix.tsv;
+# Then, filter the reads with contaminant k-mers from the FASTQs.
+python3 ChiXCHI.py filter \
+    filter_matrix.tsv \
+    sample1.fastq sample2.fastq;
 ```
 
 ## Example usage with synthetic data
