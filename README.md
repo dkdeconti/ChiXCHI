@@ -1,9 +1,12 @@
 # ChiXCHI
-  Software for identifying cross-contaminant samples in high throughput sequencing.
+
+## **Chi**meric and (**X**)cross-**C**ontaminant **H**igh throughput sequencing **I**dentification
+
+Software for identifying cross-contaminant sequence in high throughput sequencing.
 
 ## Overview
 
-ChiXCHI was designed primarily for identifying cross-sample and chimeric read contaminants for PCR based amplicon next gen sequencing.
+ChiXCHI was designed primarily for identifying cross-sample and chimeric read contaminants for PCR based amplicon next gen sequencing that occurs between libraries. Please note that chimeric reads are currently limited to those chimeric reads where part of the read comes from a contaminant sequence.
 
 ## Requirements
 
