@@ -3,7 +3,8 @@
 import argparse
 import collections
 import numpy as np
-import sklearn
+import sklearn.cluster
+import sklearn.preprocessing
 import scipy
 import sys
 from multiprocessing import Pool
@@ -43,7 +44,7 @@ def create_kmer_matrix(filenames):
     for idx, filename in enumerate(filenames):
         with open(filename, 'r') as handle:
             for line in handle:
-                cols = line.strip('\n').split('\t')
+                cols = line.strip('\n').split()
                 kmer, count = cols
                 try:
                     count = int(count)
@@ -62,7 +63,7 @@ def normalize_kmers(nonnormalized_matrix, max_norm_values=100000):
         counts,
         feature_range=(0, max_norm_values)
     )
-    return kmers, counts_minmax
+    return list(kmers), counts_minmax
 
 
 def test_for_fitness(count_matrix, df):
