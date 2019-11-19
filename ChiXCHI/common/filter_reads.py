@@ -21,6 +21,8 @@ def count_filtered(
     '''
     name_convert = re.sub(".f[ast]*q", suffix, fastq)
     samples_index = samples.index(name_convert)
+    #print(samples)
+    #print(filter_matrix[0])
     forbidden = set([
         kmers[i]
         for i, x in enumerate(filter_matrix[:, samples_index])
@@ -29,7 +31,8 @@ def count_filtered(
     total = 0
     failed = 0
     out_records = []
-    out_name = out_prefix + fastq
+    #out_name = out_prefix + fastq
+    out_name = re.sub(".f[ast]*q", ".kmer_filtered.fq", fastq)
     for seq_record in SeqIO.parse(fastq, 'fastq'):
         seq = str(seq_record.seq)
         total += 1
@@ -56,5 +59,6 @@ def read_filter_tsv(filename):
             cols = line.strip('\n').split('\t')
             kmer = cols[0]
             filter_vector = [bool(int(i)) for i in cols[1 : ]]
-            filter_matrix.append(kmer)
+            kmer_vector.append(kmer)
+            filter_matrix.append(filter_vector)
     return samples, kmer_vector, np.array(filter_matrix)

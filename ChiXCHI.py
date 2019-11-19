@@ -23,18 +23,20 @@ def filter_contaminants(args):
     Main function for handling args for the filtering of FASTQs given the
     previously identified contaminant k-mers.
     '''
-    samples, kmers, filter_matrix = flt_reads.read_filter_tsv(args.filter_tsv)
+    samples, kmers, filter_matrix = flt_reads.read_filter_tsv(args.tsv)
     results = []
     for fastq in args.fastqs:
-        results.append(flt_reads.count_filtered(
-            fastq,
-            samples,
-            kmers,
-            filter_matrix,
-            args.length,
-            args.output,
-            args.suffix
-        ))
+        results.append(
+            flt_reads.count_filtered(
+                fastq,
+                samples,
+                kmers,
+                filter_matrix,
+                args.length,
+                args.output,
+                args.suffix
+            )
+        )
     results = [failed / float(total) for failed, total in results]
 
 
